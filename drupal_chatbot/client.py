@@ -19,7 +19,7 @@ class DrupalChatbotClient:
         if self.api_key:
             new_args['key'] = self.api_key
         new_args.update(args or {})
-        response = requests.get(url, params=new_args)
+        response = requests.post(url, params=new_args)
         json_res = response.json()
         if 'error' in json_res:
             err_msg = json_res['error'].get('message')
@@ -27,3 +27,8 @@ class DrupalChatbotClient:
             raise DrupalChatbotException(message=err_msg, code=err_code)
 
         return json_res
+
+    def getData(self, args=None, action_url=''):
+        action_url = self.host_url+action_url
+
+        return self._get(action_url, args)
