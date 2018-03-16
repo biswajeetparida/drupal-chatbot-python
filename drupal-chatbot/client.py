@@ -27,11 +27,3 @@ class DrupalChatbotClient:
             raise DrupalChatbotException(message=err_msg, code=err_code)
 
         return json_res
-
-    def getTopic(self, q=None):
-        url = '%s/v1/current.json' % self.host_url
-        args = {}
-        if q:
-            args['q'] = q
-
-        return self._get(url, args)
