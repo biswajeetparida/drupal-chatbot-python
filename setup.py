@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 __version__ = '0.0.1'
 
 setup(
-    name='drupal-client',
+    name='drupal_client',
     version=__version__,
     author='biswajeetparida07@gmail.com',
     description='A client for call Drupal api',
