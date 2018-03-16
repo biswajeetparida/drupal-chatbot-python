@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 class DrupalChatbotException(Exception):
@@ -19,7 +20,7 @@ class DrupalChatbotClient:
         if self.api_key:
             new_args['key'] = self.api_key
         new_args.update(args or {})
-        response = requests.post(url, params=new_args)
+        response = requests.post(url, data=json.dumps(new_args))
         json_res = response.json()
         if 'error' in json_res:
             err_msg = json_res['error'].get('message')
